@@ -12,13 +12,13 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: color.purple,
     alignItems: 'center',
     justifyContent: 'center',
   },
   headerText: {
-    color: color.pink,
-    marginVertical: hp(1),
+    color: color.white,
+    marginTop: hp(1),
+    marginBottom:hp(2),
     fontSize: normalize(22),
   },
 });

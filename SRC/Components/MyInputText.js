@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
-
-import {color} from '../Helper/AppHelper';
+import Icon from 'react-native-dynamic-vector-icons';
+import {color, wp, hp, normalize} from '../Helper/AppHelper';
 
 const MyTextInput = (props) => {
-  const {placeholder = ''} = props;
+  const {placeholder = '', iconName = '', iconType = ''} = props;
 
   const [isFocus, setIsFocus] = useState(false);
   const TextInputOnBlur = (event) => {
@@ -19,13 +19,22 @@ const MyTextInput = (props) => {
     }
   };
   return (
-    <View style={[styles.mainView]}>
-
+    <View
+      style={[
+        styles.mainView,
+        {borderColor: isFocus ? color.primary : color.black},
+      ]}>
+      {iconName != '' && (
+        <Icon
+          name={iconName}
+          type={iconType}
+          size={wp(6)}
+          color={isFocus ? color.primary : color.black}
+          onPress={() => {}}
+        />
+      )}
       <TextInput
-        style={[
-          styles.textInput,
-          {borderColor: isFocus ? color.pink : color.purple},
-        ]}
+        style={[styles.textInput,{color:isFocus ? color.primary : color.black}]}
         placeholder={placeholder}
         onBlur={TextInputOnBlur}
         onFocus={TextInputOnFocus}
@@ -35,11 +44,19 @@ const MyTextInput = (props) => {
 };
 
 const styles = StyleSheet.create({
-  mainView: {flex: 1},
+  mainView: {
+    flex: 1,
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   textInput: {
     height: 40,
-    paddingLeft: 6,
-    borderBottomWidth: 1,
+    paddingHorizontal: 6,
+    flex: 1,
+    marginLeft: wp(1.5),
+    fontSize: normalize(18),
   },
 });
 

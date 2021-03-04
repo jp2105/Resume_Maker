@@ -33,8 +33,16 @@ const normalize = (size) => {
 const color = {
   black: '#000000',
   white: '#ffffff',
-  purple: 'rgb(11,1,63)',
+  purple: '#8a2be2',
   pink: 'rgb(226,0,117)',
+  lightGrey: '#E0E0E0',
+  background: 'rgb(37,45,55)',
+  primary: 'rgb(56,179,159)',
 };
 
-export {widthPercentageToDP as wp, heightPercentageToDP as hp, normalize, color};
+export {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  normalize,
+  color,
+};

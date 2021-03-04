@@ -5,13 +5,13 @@ import {
   ScrollView,
   View,
   Text,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from 'react-native';
 import {color, hp, wp, normalize} from './../Helper/AppHelper';
 import Header from './../Components/Header';
 import MyTextInput from '../Components/MyInputText';
 
-const UserDetails = (props) => {
+const SocialLinks = (props) => {
   return (
     <SafeAreaView style={styles.mainContainer}>
       <Header />
@@ -19,63 +19,54 @@ const UserDetails = (props) => {
         style={styles.mainContainer}
         showsVerticalScrollIndicator={false}>
         <View style={styles.headerView}>
-          <Text style={styles.headerText}>Personal Details</Text>
+          <Text style={styles.headerText}>Social Links</Text>
           <View style={styles.inputView}>
             <MyTextInput
-              placeholder={'Full Name'}
-              iconName="user-circle-o"
-              iconType="FontAwesome"
+              placeholder={'LinkedIn'}
+              iconName="linkedin-square"
+              iconType="AntDesign"
             />
           </View>
           <View style={styles.inputView}>
             <MyTextInput
-              placeholder={'Professional Title'}
-              iconName="user"
-              iconType="FontAwesome"
+              placeholder={'GitHub'}
+              iconName="github"
+              iconType="AntDesign"
             />
           </View>
           <View style={styles.inputView}>
             <MyTextInput
-              placeholder={'Email'}
-              iconName="email"
+              placeholder={'Website'}
+              iconName="web"
               iconType="MaterialCommunityIcons"
             />
           </View>
           <View style={styles.inputView}>
             <MyTextInput
-              placeholder={'Phone Number'}
-              iconName="mobile"
-              iconType="Entypo"
+              placeholder={'Twitter'}
+              iconName="twitter"
+              iconType="AntDesign"
             />
           </View>
           <View style={styles.inputView}>
             <MyTextInput
-              placeholder={'Address'}
-              iconName="location-pin"
-              iconType="Entypo"
-            />
-          </View>
-          <View style={styles.inputView}>
-            <MyTextInput
-              placeholder={'City'}
-              iconName="city"
-              iconType="FontAwesome5"
-            />
-          </View>
-          <View style={styles.inputView}>
-            <MyTextInput
-              placeholder={'Country'}
-              iconName="flag"
-              iconType="MaterialIcons"
+              placeholder={'Quora'}
+              iconName="quora"
+              iconType="FontAwesome"
             />
           </View>
         </View>
       </ScrollView>
       <View style={styles.nextButtonView}>
-        <TouchableWithoutFeedback onPress={()=>props.navigation.navigate('SocialLinks')}>
-        <Text style={styles.nextButtonText}>Next</Text>
+        <TouchableWithoutFeedback
+          onPress={() => props.navigation.navigate('UserDetails')}>
+          <Text style={styles.nextButtonText}>Prev</Text>
         </TouchableWithoutFeedback>
-        </View>
+        <TouchableWithoutFeedback
+          onPress={() => props.navigation.navigate('WorkHistory')}>
+          <Text style={styles.nextButtonText}>Next</Text>
+        </TouchableWithoutFeedback>
+      </View>
     </SafeAreaView>
   );
 };
@@ -97,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: normalize(22),
   },
   inputView: {flexDirection: 'row', marginVertical: hp(1)},
-  nextButtonView: {alignItems: 'flex-end'},
+  nextButtonView: {justifyContent: 'space-between', flexDirection: 'row'},
   nextButtonText: {
     backgroundColor: color.primary,
     paddingHorizontal: wp(5),
@@ -107,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserDetails;
+export default SocialLinks;
