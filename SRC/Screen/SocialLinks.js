@@ -10,53 +10,56 @@ import {
 import {color, hp, wp, normalize} from './../Helper/AppHelper';
 import Header from './../Components/Header';
 import MyTextInput from '../Components/MyInputText';
+import {KeyboardAwareView} from 'react-native-keyboard-aware-view';
 
 const SocialLinks = (props) => {
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <Header />
-      <ScrollView
-        style={styles.mainContainer}
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.headerView}>
-          <Text style={styles.headerText}>Social Links</Text>
-          <View style={styles.inputView}>
-            <MyTextInput
-              placeholder={'LinkedIn'}
-              iconName="linkedin-square"
-              iconType="AntDesign"
-            />
+      <KeyboardAwareView animated={true}>
+        <Header />
+        <ScrollView
+          style={styles.mainContainer}
+          showsVerticalScrollIndicator={false}>
+          <View style={styles.headerView}>
+            <Text style={styles.headerText}>Social Links</Text>
+            <View style={styles.inputView}>
+              <MyTextInput
+                placeholder={'LinkedIn'}
+                iconName="linkedin-square"
+                iconType="AntDesign"
+              />
+            </View>
+            <View style={styles.inputView}>
+              <MyTextInput
+                placeholder={'GitHub'}
+                iconName="github"
+                iconType="AntDesign"
+              />
+            </View>
+            <View style={styles.inputView}>
+              <MyTextInput
+                placeholder={'Website'}
+                iconName="web"
+                iconType="MaterialCommunityIcons"
+              />
+            </View>
+            <View style={styles.inputView}>
+              <MyTextInput
+                placeholder={'Twitter'}
+                iconName="twitter"
+                iconType="AntDesign"
+              />
+            </View>
+            <View style={styles.inputView}>
+              <MyTextInput
+                placeholder={'Quora'}
+                iconName="quora"
+                iconType="FontAwesome"
+              />
+            </View>
           </View>
-          <View style={styles.inputView}>
-            <MyTextInput
-              placeholder={'GitHub'}
-              iconName="github"
-              iconType="AntDesign"
-            />
-          </View>
-          <View style={styles.inputView}>
-            <MyTextInput
-              placeholder={'Website'}
-              iconName="web"
-              iconType="MaterialCommunityIcons"
-            />
-          </View>
-          <View style={styles.inputView}>
-            <MyTextInput
-              placeholder={'Twitter'}
-              iconName="twitter"
-              iconType="AntDesign"
-            />
-          </View>
-          <View style={styles.inputView}>
-            <MyTextInput
-              placeholder={'Quora'}
-              iconName="quora"
-              iconType="FontAwesome"
-            />
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAwareView>
       <View style={styles.nextButtonView}>
         <TouchableWithoutFeedback
           onPress={() => props.navigation.navigate('UserDetails')}>

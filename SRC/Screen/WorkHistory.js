@@ -10,38 +10,50 @@ import {
 import {color, hp, wp, normalize} from './../Helper/AppHelper';
 import Header from './../Components/Header';
 import Icon from 'react-native-dynamic-vector-icons';
-import WorkHistoryModel from '../Components/WorkHistoryModel';
-
+import WorkHistoryForm from '../Components/WorkHistoryForm';
+import {KeyboardAwareView} from 'react-native-keyboard-aware-view';
+const Data = {
+  position: 'React Native Developer',
+  Company: 'Lanet Team Software solution',
+  fromDate: {m: '05', y: '2019'},
+  toDate: {m: '05', y: '2021'},
+  city: 'Surat',
+  companyDesc: 'Client Base Company',
+  responsibility: 'Work on mobile Application',
+};
 const WorkHistory = (props) => {
   const [isOpenModel, setIsOpenModel] = useState(false);
   return (
     <SafeAreaView style={styles.mainContainer}>
       <Header />
-      <WorkHistoryModel isVisible={isOpenModel} setIsVisible={setIsOpenModel} />
-      <ScrollView
-        style={styles.mainContainer}
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.headerView}>
-          <Text style={styles.headerText}>Work History</Text>
-          <View style={styles.inputView}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                setIsOpenModel(true);
-              }}>
-              <View style={styles.jobButtonView}>
-                <Icon
-                  name={'circle-with-plus'}
-                  type={'Entypo'}
-                  size={wp(6)}
-                  color={color.primary}
-                  onPress={() => {}}
-                />
-                <Text style={styles.addJobText}>Add Job</Text>
-              </View>
-            </TouchableWithoutFeedback>
+      <KeyboardAwareView animated={true}>
+        <ScrollView
+          style={styles.mainContainer}
+          showsVerticalScrollIndicator={false}>
+          <View style={styles.headerView}>
+            <Text style={styles.headerText}>Work History</Text>
+            <View style={styles.inputView}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  props.navigation.navigate('WorkHistoryForm');
+                }}>
+                <View style={styles.jobButtonView}>
+                  <Icon
+                    name={'circle-with-plus'}
+                    type={'Entypo'}
+                    size={wp(6)}
+                    color={color.primary}
+                  />
+                  <Text style={styles.addJobText}>Add Job</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
           </View>
-        </View>
-      </ScrollView>
+          <View style={styles.headerView}>
+            <Text>{Data.position}</Text>
+          </View>
+        </ScrollView>
+      </KeyboardAwareView>
       <View style={styles.nextButtonView}>
         <TouchableWithoutFeedback
           onPress={() => props.navigation.navigate('SocialLinks')}>

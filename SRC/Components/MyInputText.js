@@ -4,7 +4,14 @@ import Icon from 'react-native-dynamic-vector-icons';
 import {color, wp, hp, normalize} from '../Helper/AppHelper';
 
 const MyTextInput = (props) => {
-  const {placeholder = '', iconName = '', iconType = ''} = props;
+  const {
+    placeholder = '',
+    iconName = '',
+    iconType = '',
+    multiline = false,
+    numberOfLines = 1,
+    textInputHeight=40
+  } = props;
 
   const [isFocus, setIsFocus] = useState(false);
   const TextInputOnBlur = (event) => {
@@ -34,10 +41,15 @@ const MyTextInput = (props) => {
         />
       )}
       <TextInput
-        style={[styles.textInput,{color:isFocus ? color.primary : color.black}]}
+        style={[
+          styles.textInput,
+          {color: isFocus ? color.primary : color.black, height: textInputHeight},
+        ]}
         placeholder={placeholder}
         onBlur={TextInputOnBlur}
         onFocus={TextInputOnFocus}
+        numberOfLines={numberOfLines}
+        multiline={multiline}
       />
     </View>
   );
@@ -52,7 +64,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textInput: {
-    height: 40,
     paddingHorizontal: 6,
     flex: 1,
     marginLeft: wp(1.5),
